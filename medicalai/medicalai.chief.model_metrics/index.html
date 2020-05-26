@@ -1,0 +1,995 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Medicalai framework - high performance, easy to learn, fast to code, ready for production">
+      
+      
+        <link rel="canonical" href="https://aibharata.github.io/medicalAI/medicalai/medicalai.chief.model_metrics/">
+      
+      
+        <meta name="author" content="Vinayaka Jyothi For AiBharata">
+      
+      <link rel="shortcut icon" href="../../img/logo.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+    
+      
+        <title>medicalai.chief.model_metrics package - Medicalai</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/termynal.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#medicalaichiefmodel_metrics-package" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://aibharata.github.io/medicalAI/" title="Medicalai" class="md-header-nav__button md-logo" aria-label="Medicalai">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Medicalai
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              medicalai.chief.model_metrics package
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/aibharata/medicalAI" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aibharata/medicalAI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://aibharata.github.io/medicalAI/" title="Medicalai" class="md-nav__button md-logo" aria-label="Medicalai">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Medicalai
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aibharata/medicalAI" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aibharata/medicalAI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Examples
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../examples/train_using_numpy_dataset/" title="Train Using Numpy Method" class="md-nav__link">
+      Train Using Numpy Method
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../examples/train_using_generator_dataset/" title="Train Using Generator Method" class="md-nav__link">
+      Train Using Generator Method
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../dataset_processors/" title="Data Processing Pipeline" class="md-nav__link">
+      Data Processing Pipeline
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../core/" title="Core" class="md-nav__link">
+      Core
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../networks/" title="AI Networks" class="md-nav__link">
+      AI Networks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../modelStats/" title="Model Statistics" class="md-nav__link">
+      Model Statistics
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#submodules" class="md-nav__link">
+    Submodules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstats-module" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats module
+  </a>
+  
+    <nav class="md-nav" aria-label="medicalai.chief.model_metrics.modelstats module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsbootstrap_aucy-pred-classes-bootstraps100-fold_size1000" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.bootstrap_auc(y, pred, classes, bootstraps=100, fold_size=1000)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsclassify_reporty_true-y_pred" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.classify_report(y_true, y_pred)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatscompute_class_freqslabels" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.compute_class_freqs(labels)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsconfidence_intervalsclass_labels-statistics" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.confidence_intervals(class_labels, statistics)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsfalse_negativesexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.false_negatives(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsfalse_positivesexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.false_positives(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsgenerate_evaluation_reportclass_names-predictions-groundtruthnone-generatornone-returnplottrue-showplottrue-printstattrue-kwargs" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.generate_evaluation_report(CLASS_NAMES, predictions, groundTruth=None, generator=None, returnPlot=True, showPlot=True, printStat=True, **kwargs)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_accuracyexpected-preds-threshold09" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_accuracy(expected, preds, threshold=0.9)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_accuracy_scoretest_labels-test_predictions" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_accuracy_score(test_labels, test_predictions)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_curvegt-pred-target_names-curveroc-returnplotfalse-showplottrue-axesnone-kwargs" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_curve(gt, pred, target_names, curve='roc', returnPlot=False, showPlot=True, axes=None, **kwargs)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_false_negy-pred-th05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_false_neg(y, pred, th=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_false_posy-pred-th05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_false_pos(y, pred, th=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_npvexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_npv(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_performance_metricsy-pred-class_labels-tp-tn-fp-fn-accnone-prevalencenone-specnone-sensnone-ppvnone-npvnone-aucnone-f1none-thresholds" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_performance_metrics(y, pred, class_labels, tp=, tn=, fp=, fn=, acc=None, prevalence=None, spec=None, sens=None, ppv=None, npv=None, auc=None, f1=None, thresholds=[])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_ppvexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_ppv(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_prevalenceexpected" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_prevalence(expected)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_roc_curvelabels-predicted_vals-groundtruthnone-generatornone-returnplotfalse-showplottrue-axesnone-kwargs" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_roc_curve(labels, predicted_vals, groundTruth=None, generator=None, returnPlot=False, showPlot=True, axes=None, **kwargs)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_sensitivityexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_sensitivity(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_specificityexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_specificity(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_true_negy-pred-th05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_true_neg(y, pred, th=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_true_posy-pred-th05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_true_pos(y, pred, th=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsget_weighted_losspos_weights-neg_weights-epsilon1e-07" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.get_weighted_loss(pos_weights, neg_weights, epsilon=1e-07)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsmodel_performance_metricsy-pred-class_labels-tp-tn-fp-fn-thresholds" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.model_performance_metrics(y, pred, class_labels, tp=, tn=, fp=, fn=, thresholds=[])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsplatt_scalingy-pred-class_labels" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.platt_scaling(y, pred, class_labels)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsplot_calibration_curvey-pred-class_labels" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.plot_calibration_curve(y, pred, class_labels)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsplot_confusion_matrixmodelnone-test_datanone-test_labelsnone-labelnamesnone-titleconfusion-matrix-predictionsnone-showplottrue-returnplotfalse" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.plot_confusion_matrix(model=None, test_data=None, test_labels=None, labelNames=None, title='Confusion Matrix', predictions=None, showPlot=True, returnPlot=False)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsprint_classification_reporty_true-y_pred" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.print_classification_report(y_true, y_pred)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsprint_cohen_kappa_scorey_true-y_pred" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.print_cohen_kappa_score(y_true, y_pred)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatsrender_df_as_tabledata-titletable-col_width30-row_height0625-font_size18-header_color655ee5-row_colorsf1f1f2-w-edge_colorw-bbox0-0-1-1-header_columns0-resetindexfalse-axnone-kwargs" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.render_df_as_table(data, title='Table', col_width=3.0, row_height=0.625, font_size=18, header_color='#655EE5', row_colors=['#f1f1f2', 'w'], edge_color='w', bbox=[0, 0, 1, 1], header_columns=0, resetIndex=False, ax=None, **kwargs)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatstrue_negativesexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.true_negatives(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medicalaichiefmodel_metricsmodelstatstrue_positivesexpected-preds-threshold05" class="md-nav__link">
+    medicalai.chief.model_metrics.modelstats.true_positives(expected, preds, threshold=0.5)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-contents" class="md-nav__link">
+    Module contents
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="medicalaichiefmodel_metrics-package">medicalai.chief.model_metrics package<a class="headerlink" href="#medicalaichiefmodel_metrics-package" title="Permanent link">&para;</a></h1>
+<h2 id="submodules">Submodules<a class="headerlink" href="#submodules" title="Permanent link">&para;</a></h2>
+<h2 id="medicalaichiefmodel_metricsmodelstats-module">medicalai.chief.model_metrics.modelstats module<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstats-module" title="Permanent link">&para;</a></h2>
+<h3 id="medicalaichiefmodel_metricsmodelstatsbootstrap_aucy-pred-classes-bootstraps100-fold_size1000">medicalai.chief.model_metrics.modelstats.bootstrap_auc(y, pred, classes, bootstraps=100, fold_size=1000)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsbootstrap_aucy-pred-classes-bootstraps100-fold_size1000" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsclassify_reporty_true-y_pred">medicalai.chief.model_metrics.modelstats.classify_report(y_true, y_pred)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsclassify_reporty_true-y_pred" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatscompute_class_freqslabels">medicalai.chief.model_metrics.modelstats.compute_class_freqs(labels)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatscompute_class_freqslabels" title="Permanent link">&para;</a></h3>
+<p>Compute positive and negative frequences for each class.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<p><strong>labels</strong> (<em>np.array</em>) – matrix of labels, size (num_examples, num_classes)</p>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>array of positive frequences for each</p>
+<div class="highlight"><pre><span></span><code>class, size (num_classes)
+</code></pre></div>
+
+<p>negative_frequencies (np.array): array of negative frequences for each</p>
+<div class="highlight"><pre><span></span><code>class, size (num_classes)
+</code></pre></div>
+
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>positive_frequencies (np.array)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsconfidence_intervalsclass_labels-statistics">medicalai.chief.model_metrics.modelstats.confidence_intervals(class_labels, statistics)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsconfidence_intervalsclass_labels-statistics" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsfalse_negativesexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.false_negatives(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsfalse_negativesexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Count false positives.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>pred</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>false negatives</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>false_neg (int)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsfalse_positivesexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.false_positives(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsfalse_positivesexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Count false positives.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>false positives</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>false_pos (int)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsgenerate_evaluation_reportclass_names-predictions-groundtruthnone-generatornone-returnplottrue-showplottrue-printstattrue-kwargs">medicalai.chief.model_metrics.modelstats.generate_evaluation_report(CLASS_NAMES, predictions, groundTruth=None, generator=None, returnPlot=True, showPlot=True, printStat=True, **kwargs)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsgenerate_evaluation_reportclass_names-predictions-groundtruthnone-generatornone-returnplottrue-showplottrue-printstattrue-kwargs" title="Permanent link">&para;</a></h3>
+<p>Generates Evaluation PDF Report for a Test/Validation experimentation. Ground truth needs to be passed to generate the pdf report.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>CLASS_NAMES</strong> (<em>list</em>) – List of Label names or class names of dataset.</p>
+</li>
+<li>
+<p><strong>predictions</strong> (<em>np.array</em>) – Predicted output of test data.</p>
+</li>
+<li>
+<p><strong>groundTruth</strong> (<em>np.array</em>) – Ground truth of test data.</p>
+</li>
+<li>
+<p><strong>generator</strong> (<em>Optional</em>) – If generator method used in training, pass the generator.</p>
+</li>
+<li>
+<p><strong>returnPlot</strong> (<em>Bool</em>) – Returns the plot handle if set to True</p>
+</li>
+<li>
+<p><strong>showPlot</strong> (<em>Bool</em>) – Display the plot if set to True. [IMP: Until the plot is closed, the code execution is blocked.]</p>
+</li>
+<li>
+<p><strong>printStat</strong> (<em>Bool</em>) – Print the statistics of the experiment on the console if set to True. T</p>
+</li>
+<li>
+<p><strong>**kwargs</strong> (<em>Optional</em>) – Plot Setting Arguments</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>true positives</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>true_pos (int)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_accuracyexpected-preds-threshold09">medicalai.chief.model_metrics.modelstats.get_accuracy(expected, preds, threshold=0.9)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_accuracyexpected-preds-threshold09" title="Permanent link">&para;</a></h3>
+<p>Compute accuracy of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>accuracy of predictions at threshold</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>accuracy (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_accuracy_scoretest_labels-test_predictions">medicalai.chief.model_metrics.modelstats.get_accuracy_score(test_labels, test_predictions)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_accuracy_scoretest_labels-test_predictions" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_curvegt-pred-target_names-curveroc-returnplotfalse-showplottrue-axesnone-kwargs">medicalai.chief.model_metrics.modelstats.get_curve(gt, pred, target_names, curve='roc', returnPlot=False, showPlot=True, axes=None, **kwargs)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_curvegt-pred-target_names-curveroc-returnplotfalse-showplottrue-axesnone-kwargs" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_false_negy-pred-th05">medicalai.chief.model_metrics.modelstats.get_false_neg(y, pred, th=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_false_negy-pred-th05" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_false_posy-pred-th05">medicalai.chief.model_metrics.modelstats.get_false_pos(y, pred, th=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_false_posy-pred-th05" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_npvexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.get_npv(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_npvexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Compute NPV of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>negative predictive value of predictions at threshold</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>NPV (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_performance_metricsy-pred-class_labels-tp-tn-fp-fn-accnone-prevalencenone-specnone-sensnone-ppvnone-npvnone-aucnone-f1none-thresholds">medicalai.chief.model_metrics.modelstats.get_performance_metrics(y, pred, class_labels, tp=<function get_true_pos>, tn=<function get_true_neg>, fp=<function get_false_pos>, fn=<function get_false_neg>, acc=None, prevalence=None, spec=None, sens=None, ppv=None, npv=None, auc=None, f1=None, thresholds=[])<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_performance_metricsy-pred-class_labels-tp-tn-fp-fn-accnone-prevalencenone-specnone-sensnone-ppvnone-npvnone-aucnone-f1none-thresholds" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_ppvexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.get_ppv(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_ppvexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Compute PPV of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>positive predictive value of predictions at threshold</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>PPV (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_prevalenceexpected">medicalai.chief.model_metrics.modelstats.get_prevalence(expected)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_prevalenceexpected" title="Permanent link">&para;</a></h3>
+<p>Compute accuracy of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>prevalence of positive cases</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>prevalence (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_roc_curvelabels-predicted_vals-groundtruthnone-generatornone-returnplotfalse-showplottrue-axesnone-kwargs">medicalai.chief.model_metrics.modelstats.get_roc_curve(labels, predicted_vals, groundTruth=None, generator=None, returnPlot=False, showPlot=True, axes=None, **kwargs)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_roc_curvelabels-predicted_vals-groundtruthnone-generatornone-returnplotfalse-showplottrue-axesnone-kwargs" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_sensitivityexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.get_sensitivity(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_sensitivityexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Compute sensitivity of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>probability that our test outputs positive given that the case is actually positive</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>sensitivity (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_specificityexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.get_specificity(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_specificityexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Compute specificity of predictions at threshold.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>probability that the test outputs negative given that the case is actually negative</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>specificity (float)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_true_negy-pred-th05">medicalai.chief.model_metrics.modelstats.get_true_neg(y, pred, th=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_true_negy-pred-th05" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_true_posy-pred-th05">medicalai.chief.model_metrics.modelstats.get_true_pos(y, pred, th=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_true_posy-pred-th05" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsget_weighted_losspos_weights-neg_weights-epsilon1e-07">medicalai.chief.model_metrics.modelstats.get_weighted_loss(pos_weights, neg_weights, epsilon=1e-07)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsget_weighted_losspos_weights-neg_weights-epsilon1e-07" title="Permanent link">&para;</a></h3>
+<p>Return weighted loss function given negative weights and positive weights.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>pos_weights</strong> (<em>np.array</em>) – array of positive weights for each class, size (num_classes)</p>
+</li>
+<li>
+<p><strong>neg_weights</strong> (<em>np.array</em>) – array of negative weights for each class, size (num_classes)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>weighted loss function</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>weighted_loss (function)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatsmodel_performance_metricsy-pred-class_labels-tp-tn-fp-fn-thresholds">medicalai.chief.model_metrics.modelstats.model_performance_metrics(y, pred, class_labels, tp=<function get_true_pos>, tn=<function get_true_neg>, fp=<function get_false_pos>, fn=<function get_false_neg>, thresholds=[])<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsmodel_performance_metricsy-pred-class_labels-tp-tn-fp-fn-thresholds" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsplatt_scalingy-pred-class_labels">medicalai.chief.model_metrics.modelstats.platt_scaling(y, pred, class_labels)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsplatt_scalingy-pred-class_labels" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsplot_calibration_curvey-pred-class_labels">medicalai.chief.model_metrics.modelstats.plot_calibration_curve(y, pred, class_labels)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsplot_calibration_curvey-pred-class_labels" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsplot_confusion_matrixmodelnone-test_datanone-test_labelsnone-labelnamesnone-titleconfusion-matrix-predictionsnone-showplottrue-returnplotfalse">medicalai.chief.model_metrics.modelstats.plot_confusion_matrix(model=None, test_data=None, test_labels=None, labelNames=None, title='Confusion Matrix', predictions=None, showPlot=True, returnPlot=False)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsplot_confusion_matrixmodelnone-test_datanone-test_labelsnone-labelnamesnone-titleconfusion-matrix-predictionsnone-showplottrue-returnplotfalse" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsprint_classification_reporty_true-y_pred">medicalai.chief.model_metrics.modelstats.print_classification_report(y_true, y_pred)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsprint_classification_reporty_true-y_pred" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsprint_cohen_kappa_scorey_true-y_pred">medicalai.chief.model_metrics.modelstats.print_cohen_kappa_score(y_true, y_pred)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsprint_cohen_kappa_scorey_true-y_pred" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatsrender_df_as_tabledata-titletable-col_width30-row_height0625-font_size18-header_color655ee5-row_colorsf1f1f2-w-edge_colorw-bbox0-0-1-1-header_columns0-resetindexfalse-axnone-kwargs">medicalai.chief.model_metrics.modelstats.render_df_as_table(data, title='Table', col_width=3.0, row_height=0.625, font_size=18, header_color='#655EE5', row_colors=['#f1f1f2', 'w'], edge_color='w', bbox=[0, 0, 1, 1], header_columns=0, resetIndex=False, ax=None, **kwargs)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatsrender_df_as_tabledata-titletable-col_width30-row_height0625-font_size18-header_color655ee5-row_colorsf1f1f2-w-edge_colorw-bbox0-0-1-1-header_columns0-resetindexfalse-axnone-kwargs" title="Permanent link">&para;</a></h3>
+<h3 id="medicalaichiefmodel_metricsmodelstatstrue_negativesexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.true_negatives(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatstrue_negativesexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Count true negatives.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>true negatives</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>true_neg (int)</p>
+</li>
+</ul>
+<h3 id="medicalaichiefmodel_metricsmodelstatstrue_positivesexpected-preds-threshold05">medicalai.chief.model_metrics.modelstats.true_positives(expected, preds, threshold=0.5)<a class="headerlink" href="#medicalaichiefmodel_metricsmodelstatstrue_positivesexpected-preds-threshold05" title="Permanent link">&para;</a></h3>
+<p>Count true positives.</p>
+<ul>
+<li>
+<p><strong>Parameters</strong></p>
+<ul>
+<li>
+<p><strong>expected</strong> (<em>np.array</em>) – ground truth, size (n_examples)</p>
+</li>
+<li>
+<p><strong>preds</strong> (<em>np.array</em>) – model output, size (n_examples)</p>
+</li>
+<li>
+<p><strong>threshold</strong> (<em>float</em>) – cutoff value for positive prediction from model</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Returns</strong></p>
+<p>true positives</p>
+</li>
+<li>
+<p><strong>Return type</strong></p>
+<p>true_pos (int)</p>
+</li>
+</ul>
+<h2 id="module-contents">Module contents<a class="headerlink" href="#module-contents" title="Permanent link">&para;</a></h2>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
+      
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js"></script>
+      
+        <script src="../../js/termynal.js"></script>
+      
+        <script src="../../js/custom.js"></script>
+      
+        <script src="../../js/chat.js"></script>
+      
+    
+  </body>
+</html>
